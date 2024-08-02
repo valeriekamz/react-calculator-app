@@ -91,6 +91,8 @@ function reducer(state, { type, payload }) {
         operation: null,
         currentOperand: evaluate(state),
       };
+    default: // Added default case
+      return state;
   }
 }
 
@@ -124,7 +126,7 @@ function formatOperand(operand) {
   if (operand == null) return;
   const [integer, decimal] = operand.split(".");
   if (decimal == null) return INTEGER_FORMATTER.format(integer);
-  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`
+  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`;
 }
 
 function App() {
